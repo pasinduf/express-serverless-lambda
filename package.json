@@ -9,6 +9,8 @@
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "start": "npm run dev",
+    "typeorm": "typeorm-ts-node-commonjs -d src/lib/data-source.ts",
+    "db:sync": "npm run typeorm schema:sync",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
