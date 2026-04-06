@@ -1,0 +1,81 @@
+{
+  "C:\\Users\\pasin\\.gemini\\antigravity\\scratch\\express-serverless-lambda\\serverless.yml": {
+    "versionFramework": "4.33.3",
+    "servicePath": "C:\\Users\\pasin\\.gemini\\antigravity\\scratch\\express-serverless-lambda\\serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "express-serverless-lambda",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs20.x",
+        "region": "us-east-1",
+        "stage": "dev",
+        "environment": {
+          "DATABASE_URL": "${env:DATABASE_URL}",
+          "JWT_SECRET": "<REDACTED>",
+          "NODE_ENV": "${env:NODE_ENV}"
+        }
+      },
+      "functions": {
+        "api": {
+          "handler": "src/index.handler",
+          "events": [
+            {
+              "http": {
+                "path": "/",
+                "method": "ANY",
+                "cors": true
+              }
+            },
+            {
+              "http": {
+                "path": "/{proxy+}",
+                "method": "ANY",
+                "cors": true
+              }
+            }
+          ]
+        }
+      },
+      "plugins": [
+        "serverless-plugin-typescript",
+        "serverless-offline"
+      ],
+      "custom": {
+        "serverless-offline": {
+          "httpPort": 3000,
+          "websocketPort": 3001,
+          "lambdaPort": 3002
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs20.x",
+      "region": "us-east-1",
+      "stage": "dev",
+      "environment": {
+        "DATABASE_URL": "${env:DATABASE_URL}",
+        "JWT_SECRET": "<REDACTED>",
+        "NODE_ENV": "${env:NODE_ENV}"
+      }
+    },
+    "error": {
+      "message": "You must sign in or use a license key with Serverless Framework V.4 and later versions. Please use \"serverless login\".",
+      "stack": "Error: You must sign in or use a license key with Serverless Framework V.4 and later versions. Please use \"serverless login\".\n    at Authentication.getAuthenticatedData (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:889:11573)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Authentication.authenticate (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:892:4133)\n    at async TraditionalRunner.resolveVariablesAndAuthenticate (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:900:2397)\n    at async TraditionalRunner.run (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:2344:28113)\n    at async route (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:2515:2848)\n    at async Object.run (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:2516:3886)\n    at async run2 (file:///C:/Users/pasin/.serverless/releases/4.33.3/package/dist/sf-core.js:2516:5040)"
+    },
+    "serviceRawFile": "service: express-serverless-lambda\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs20.x\r\n  region: us-east-1\r\n  stage: dev\r\n  environment:\r\n    DATABASE_URL: ${env:DATABASE_URL}\r\n    JWT_SECRET: ${env:JWT_SECRET}\r\n    NODE_ENV: ${env:NODE_ENV}\r\n\r\nfunctions:\r\n  api:\r\n    handler: src/index.handler\r\n    events:\r\n      - http:\r\n          path: /\r\n          method: ANY\r\n          cors: true\r\n      - http:\r\n          path: /{proxy+}\r\n          method: ANY\r\n          cors: true\r\n\r\nplugins:\r\n  - serverless-plugin-typescript\r\n  - serverless-offline\r\n\r\ncustom:\r\n  serverless-offline:\r\n    httpPort: 3000\r\n    websocketPort: 3001\r\n    lambdaPort: 3002\r\n",
+    "command": [
+      "offline",
+      "start"
+    ],
+    "options": {
+      "noPrependStageInUrl": true
+    },
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
