@@ -30,6 +30,7 @@ jobs:
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           DB_SYNC: "true"
+          NODE_ENV: production
           
       - name: Serverless Deploy
         uses: serverless/github-action@v4
